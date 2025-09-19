@@ -54,7 +54,7 @@ public class SecurityConfig {
 //                        .requestMatchers("/admin/**").authenticated()
 //                        .requestMatchers("/users/**").authenticated()
 
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
 
                 // Disable default login forms (we use custom REST endpoints)
