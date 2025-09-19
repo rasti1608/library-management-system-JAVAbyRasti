@@ -33,10 +33,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")  // Apply to all endpoints
-                .allowedOrigins(
-                        "http://localhost",                                    // Local development
-                        "https://melodious-mousse-c2a470.netlify.app"              // Netlify production
-                )
+                .allowedOriginPatterns("*")                                    // Allow all origins
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")     // Standard HTTP methods
                 .allowCredentials(true)                                        // Enable session cookies
                 .allowedHeaders("*")                                           // Accept all headers
