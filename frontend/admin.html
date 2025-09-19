@@ -1,0 +1,451 @@
+<!--
+    Library Management System - Admin Page
+    Created by: Rastislav Toscak
+    Date: September 18, 2025
+    Description: Admin interface for managing books and users
+    Connects to Spring Boot REST API on localhost:8085
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Library Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background-color: #0056b3;
+        }
+        
+        .admin-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .admin-section h2 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .form-row input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex: 1;
+        }
+        
+        .form-row button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .form-row button:hover {
+            background-color: #218838;
+        }
+        
+        .message {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            display: none;
+        }
+        
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border-left: 4px solid #007bff;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Admin Panel</h1>
+        <div class="nav-links">
+            <a href="books.html">View Books</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </div>
+    
+    <div class="admin-section">
+        <h2>Library Statistics</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalBooks">-</div>
+                <div class="stat-label">Total Books</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="availableBooks">-</div>
+                <div class="stat-label">Available Books</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="rentedBooks">-</div>
+                <div class="stat-label">Rented Books</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalUsers">-</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="admin-section">
+        <h2>Add New Book</h2>
+        <div id="addBookMessage" class="message"></div>
+        
+        <div class="form-row">
+            <input type="text" id="bookTitle" placeholder="Book Title" required>
+            <input type="text" id="bookAuthor" placeholder="Author" required>
+            <input type="text" id="bookGenre" placeholder="Genre">
+            <button onclick="addBook()">Add Book</button>
+        </div>
+    </div>
+    
+    <div class="admin-section">
+        <h2>User Management</h2>
+        <div id="userManagementMessage" class="message"></div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="adminCount">-</div>
+                <div class="stat-label">Admin Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="regularUserCount">-</div>
+                <div class="stat-label">Regular Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="recentRegistrations">-</div>
+                <div class="stat-label">Recent Registrations</div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <button onclick="loadAllUsers()" style="background-color: #17a2b8;">View All Users</button>
+            <button onclick="showUserStats()" style="background-color: #6f42c1;">User Statistics</button>
+            <button onclick="manageUserRoles()" style="background-color: #fd7e14;">Manage Roles</button>
+        </div>
+        
+        <div id="usersList" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 6px; display: none;">
+            <h4>Admin-Only User Management</h4>
+            <p style="color: #666;">• View all registered users and their roles</p>
+            <p style="color: #666;">• Promote users from USER to ADMIN</p>
+            <p style="color: #666;">• Demote admins back to USER (except protected accounts)</p>
+            <p style="color: #666;">• Delete user accounts (with rental history checks)</p>
+            <p style="color: #666;">• Monitor recent registrations and account activity</p>
+        </div>
+    </div>
+    
+    <div class="admin-section">
+        <h2>Quick Actions</h2>
+        <div class="form-row">
+            <button onclick="refreshStats()">Refresh Statistics</button>
+            <button onclick="viewAllUsers()" style="background-color: #17a2b8;">View All Users</button>
+            <button onclick="exportBooks()" style="background-color: #ffc107; color: #212529;">Export Books</button>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8085';
+        
+        // Load stats when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAdminAccess();
+            loadStatistics();
+        });
+        
+        /**
+         * Check if current user has admin access
+         */
+        async function checkAdminAccess() {
+            try {
+                // Try to access an admin endpoint to verify permissions
+                const response = await fetch(`${API_BASE_URL}/users`, {
+                    credentials: 'include'
+                });
+                
+                if (response.status === 401) {
+                    alert('Please log in first');
+                    window.location.href = 'index.html';
+                } else if (response.status === 403) {
+                    alert('Admin access required');
+                    window.location.href = 'books.html';
+                }
+            } catch (error) {
+                console.error('Admin access check failed:', error);
+            }
+        }
+        
+        /**
+         * Load library statistics including user counts
+         */
+        async function loadStatistics() {
+            try {
+                // Get books data with pagination to get total count
+                const booksResponse = await fetch(`${API_BASE_URL}/books?page=0&size=1`, {
+                    credentials: 'include'
+                });
+                
+                if (booksResponse.ok) {
+                    const booksData = await booksResponse.json();
+                    
+                    // Use total from paginated response for accurate count
+                    const totalBooks = booksData.total || 0;
+                    
+                    // Get all books to count by status
+                    const allBooksResponse = await fetch(`${API_BASE_URL}/books?page=0&size=${totalBooks}`, {
+                        credentials: 'include'
+                    });
+                    
+                    if (allBooksResponse.ok) {
+                        const allBooksData = await allBooksResponse.json();
+                        const books = allBooksData.content || allBooksData;
+                        
+                        const availableBooks = books.filter(book => book.status === 'AVAILABLE').length;
+                        const rentedBooks = books.filter(book => book.status === 'RENTED').length;
+                        
+                        document.getElementById('totalBooks').textContent = totalBooks;
+                        document.getElementById('availableBooks').textContent = availableBooks;
+                        document.getElementById('rentedBooks').textContent = rentedBooks;
+                    }
+                }
+                
+                // Get users data with pagination to get total count
+                try {
+                    const usersResponse = await fetch(`${API_BASE_URL}/users?page=0&size=1`, {
+                        credentials: 'include'
+                    });
+                    
+                    if (usersResponse.ok) {
+                        const usersData = await usersResponse.json();
+                        const totalUsers = usersData.total || 0;
+                        
+                        // Get all users to count by role
+                        const allUsersResponse = await fetch(`${API_BASE_URL}/users?page=0&size=${totalUsers}`, {
+                            credentials: 'include'
+                        });
+                        
+                        if (allUsersResponse.ok) {
+                            const allUsersData = await allUsersResponse.json();
+                            const users = allUsersData.content || allUsersData;
+                            
+                            const adminUsers = users.filter(user => user.role === 'ADMIN').length;
+                            const regularUsers = users.filter(user => user.role === 'USER').length;
+                            
+                            document.getElementById('totalUsers').textContent = totalUsers;
+                            document.getElementById('adminCount').textContent = adminUsers;
+                            document.getElementById('regularUserCount').textContent = regularUsers;
+                            document.getElementById('recentRegistrations').textContent = Math.min(totalUsers, 10);
+                        }
+                    }
+                } catch (e) {
+                    console.error('Error loading user statistics:', e);
+                    document.getElementById('totalUsers').textContent = 'Error';
+                    document.getElementById('adminCount').textContent = 'Error';
+                    document.getElementById('regularUserCount').textContent = 'Error';
+                    document.getElementById('recentRegistrations').textContent = 'Error';
+                }
+                
+            } catch (error) {
+                console.error('Error loading statistics:', error);
+            }
+        }
+        
+        /**
+         * Show all users (demo of admin privilege)
+         */
+        function loadAllUsers() {
+            const usersList = document.getElementById('usersList');
+            usersList.style.display = usersList.style.display === 'none' ? 'block' : 'none';
+            showMessage('userManagementMessage', 'Admin Feature: User management interface would display here', 'success');
+        }
+        
+        /**
+         * Show user statistics (admin only)
+         */
+        function showUserStats() {
+            showMessage('userManagementMessage', 'Admin Stats: Registration trends, active users, rental patterns', 'success');
+        }
+        
+        /**
+         * Manage user roles (admin only)
+         */
+        function manageUserRoles() {
+            showMessage('userManagementMessage', 'Role Management: Promote/demote users, assign permissions', 'success');
+        }
+        
+        /**
+         * Add new book
+         */
+        async function addBook() {
+            const title = document.getElementById('bookTitle').value.trim();
+            const author = document.getElementById('bookAuthor').value.trim();
+            const genre = document.getElementById('bookGenre').value.trim();
+            
+            if (!title || !author) {
+                showMessage('addBookMessage', 'Title and Author are required', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/books`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        title: title,
+                        author: author,
+                        genre: genre
+                    })
+                });
+                
+                if (response.ok) {
+                    showMessage('addBookMessage', 'Book added successfully!', 'success');
+                    document.getElementById('bookTitle').value = '';
+                    document.getElementById('bookAuthor').value = '';
+                    document.getElementById('bookGenre').value = '';
+                    loadStatistics(); // Refresh stats
+                } else {
+                    const errorData = await response.json();
+                    showMessage('addBookMessage', errorData.error || 'Failed to add book', 'error');
+                }
+                
+            } catch (error) {
+                console.error('Error adding book:', error);
+                showMessage('addBookMessage', 'Connection error', 'error');
+            }
+        }
+        
+        /**
+         * Refresh statistics
+         */
+        function refreshStats() {
+            loadStatistics();
+        }
+        
+        /**
+         * View all users (placeholder)
+         */
+        function viewAllUsers() {
+            alert('User management feature - would show list of all users with edit/delete options');
+        }
+        
+        /**
+         * Export books (placeholder)
+         */
+        function exportBooks() {
+            alert('Export feature - would download books as JSON file');
+        }
+        
+        /**
+         * Logout
+         */
+        async function logout() {
+            try {
+                await fetch(`${API_BASE_URL}/auth/logout`, {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+            window.location.href = 'index.html';
+        }
+        
+        /**
+         * Show message to user
+         */
+        function showMessage(elementId, text, type) {
+            const messageDiv = document.getElementById(elementId);
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
