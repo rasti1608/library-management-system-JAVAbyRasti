@@ -6,64 +6,55 @@ import com.example.librarymanagementsystem.util.JsonFileHandler;
 import com.example.librarymanagementsystem.util.CacheHelper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.stereotype.Repository;
-import jakarta.annotation.PostConstruct;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
 
+// @Repository marks this as data access layer component
 @Repository
 public class JsonBookRepository implements BookRepository {
 
     private final JsonFileHandler<Book> fileHandler;
-    private List<Book> books; // In-memory storage
 
+    // Constructor injection with CacheHelper dependency
     public JsonBookRepository(CacheHelper cacheHelper) {
+        // Create JsonFileHandler with caching support
         this.fileHandler = new JsonFileHandler<>("data/books.json", new TypeReference<List<Book>>() {}, cacheHelper);
-    }
-
-    @PostConstruct
-    public void loadInitialData() {
-        // Load data once at startup from JSON file
-        try {
-            List<Book> initialBooks = fileHandler.readFromFile();
-            this.books = new CopyOnWriteArrayList<>(initialBooks); // Thread-safe list
-        } catch (Exception e) {
-            // If file doesn't exist or fails to load, start with empty list
-            this.books = new CopyOnWriteArrayList<>();
-        }
     }
 
     @Override
     public List<Book> findAll() {
-        return new ArrayList<>(books); // Return copy to prevent external modification
+        return fileHandler.readFromFile();
     }
 
     @Override
     public Optional<Book> findById(String id) {
-        return books.stream()
+        return findAll().stream()
                 .filter(book -> book.getId().equals(id))
                 .findFirst();
     }
 
     @Override
     public Book save(Book book) {
+        List<Book> books = findAll();
         // Remove existing book with same ID for updates
         books.removeIf(existingBook -> existingBook.getId().equals(book.getId()));
         books.add(book);
+        fileHandler.writeToFile(books);
         return book;
     }
 
     @Override
     public void delete(String id) {
+        List<Book> books = findAll();
         books.removeIf(book -> book.getId().equals(id));
+        fileHandler.writeToFile(books);
     }
 
     @Override
     public List<Book> findByTitleContaining(String title) {
         // Case-insensitive search by title
-        return books.stream()
+        return findAll().stream()
                 .filter(book -> book.getTitle().toLowerCase().contains(title.toLowerCase().trim()))
                 .toList();
     }
@@ -71,7 +62,7 @@ public class JsonBookRepository implements BookRepository {
     @Override
     public List<Book> findByAuthorContaining(String author) {
         // Case-insensitive search by author
-        return books.stream()
+        return findAll().stream()
                 .filter(book -> book.getAuthor().toLowerCase().contains(author.toLowerCase().trim()))
                 .toList();
     }
@@ -79,7 +70,7 @@ public class JsonBookRepository implements BookRepository {
     @Override
     public boolean existsByTitleAndAuthor(String title, String author) {
         // Check for duplicate title + author combination
-        return books.stream()
+        return findAll().stream()
                 .anyMatch(book ->
                         book.getTitle().equalsIgnoreCase(title.trim()) &&
                                 book.getAuthor().equalsIgnoreCase(author.trim())

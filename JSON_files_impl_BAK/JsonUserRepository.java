@@ -6,72 +6,65 @@ import com.example.librarymanagementsystem.util.JsonFileHandler;
 import com.example.librarymanagementsystem.util.CacheHelper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.stereotype.Repository;
-import jakarta.annotation.PostConstruct;
 
+import java.io.File;
 import java.util.List;
 import java.util.Optional;
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
 
+// @Repository tells Spring this is a data access component
 @Repository
 public class JsonUserRepository implements UserRepository {
 
     private final JsonFileHandler<User> fileHandler;
-    private List<User> users; // In-memory storage
 
+    // Constructor injection - Spring provides CacheHelper automatically
+    // CacheHelper is needed for JsonFileHandler's 3-parameter constructor
     public JsonUserRepository(CacheHelper cacheHelper) {
+        // Handle List<User> type for JSON operations
         this.fileHandler = new JsonFileHandler<>("data/users.json", new TypeReference<List<User>>() {}, cacheHelper);
-    }
-
-    @PostConstruct
-    public void loadInitialData() {
-        // Load data once at startup from JSON file
-        try {
-            List<User> initialUsers = fileHandler.readFromFile();
-            this.users = new CopyOnWriteArrayList<>(initialUsers); // Thread-safe list
-        } catch (Exception e) {
-            // If file doesn't exist or fails to load, start with empty list
-            this.users = new CopyOnWriteArrayList<>();
-        }
     }
 
     @Override
     public List<User> findAll() {
-        return new ArrayList<>(users); // Return copy to prevent external modification
+        return fileHandler.readFromFile();
     }
 
     @Override
     public Optional<User> findById(String id) {
-        return users.stream()
+        return findAll().stream()
                 .filter(user -> user.getId().equals(id))
                 .findFirst();
     }
 
     @Override
     public Optional<User> findByUsername(String username) {
-        return users.stream()
+        return findAll().stream()
                 .filter(user -> user.getUsername().equalsIgnoreCase(username.trim()))
                 .findFirst();
     }
 
     @Override
     public Optional<User> findByEmail(String email) {
-        return users.stream()
+        return findAll().stream()
                 .filter(user -> user.getEmail().equalsIgnoreCase(email.trim()))
                 .findFirst();
     }
 
     @Override
     public User save(User user) {
+        List<User> users = findAll();
         // Remove existing user with same ID if updating
         users.removeIf(existingUser -> existingUser.getId().equals(user.getId()));
         users.add(user);
+        fileHandler.writeToFile(users);
         return user;
     }
 
     @Override
     public void delete(String id) {
+        List<User> users = findAll();
         users.removeIf(user -> user.getId().equals(id));
+        fileHandler.writeToFile(users);
     }
 
     @Override
