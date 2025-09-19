@@ -1,0 +1,26 @@
+# Ignore build output
+/target/
+
+# Ignore IntelliJ IDEA project files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Logs and temp files
+*.log
+*.tmp
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+
+# Exclude personal configs
+application-*.yml
+application-*.properties
+
+# Allow Maven wrapper (keep these in git)
+!mvnw
+!mvnw.cmd
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
