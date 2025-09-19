@@ -33,19 +33,22 @@ public class SecurityConfig {
                 // Configure endpoint access rules
                 .authorizeHttpRequests(auth -> auth
                         // Public endpoints
-                        .requestMatchers(
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html",
-                                "/swagger-resources/**",
-                                "/webjars/**",
-                                "/actuator/health",
-                                "/health",
-                                "/auth/**",
-                                "/books/**",
-                                "/users/**",  // Add this line
-                                "/error"
-                        ).permitAll()
+                                .requestMatchers(
+                                        "/v3/api-docs/**",
+                                        "/swagger-ui/**",
+                                        "/swagger-ui.html",
+                                        "/swagger-resources/**",
+                                        "/webjars/**",
+                                        "/actuator/health",
+                                        "/health",
+                                        "/api/auth/**",     // Add /api prefix
+                                        "/auth/**",
+                                        "/api/books/**",    // Add /api prefix
+                                        "/books/**",
+                                        "/api/users/**",    // Add /api prefix
+                                        "/users/**",
+                                        "/error"
+                                ).permitAll()
 
                         // Protected endpoints
 //                        .requestMatchers("/admin/**").authenticated()
