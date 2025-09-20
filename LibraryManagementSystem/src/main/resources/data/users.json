@@ -1,0 +1,11 @@
+[
+  {
+    "userId": "test-123",
+    "username": "admin",
+    "passwordHash": "$2a$10$SIncPB9YBuZg2BVAn6tU/emnBMwca6r6ezwCW/P0VwYNteMA8JLrm",
+    "userEmail": "admin@test.com",
+    "role": "ADMIN",
+    "protected": true,
+    "mustChangePassword": false
+  }
+]

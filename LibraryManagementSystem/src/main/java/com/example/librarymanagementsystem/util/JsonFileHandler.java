@@ -35,15 +35,25 @@ public class JsonFileHandler<T> {
     // Optimized read with caching
     public List<T> readFromFile() {
         try {
-            // 1) Open file
-            java.io.File file = new java.io.File(filePath);
-            if (!file.exists() || file.length() == 0) {
-                System.out.println("[JsonFileHandler] File missing or empty: " + filePath);
-                return new java.util.ArrayList<>();
+            String raw;
+
+            // 1) Try classpath (works inside the JAR on Railway)
+            try (java.io.InputStream is =
+                         new org.springframework.core.io.ClassPathResource(filePath).getInputStream()) {
+                raw = new String(is.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+                System.out.println("[JsonFileHandler] Loaded from CLASSPATH: " + filePath);
+            } catch (Exception miss) {
+                // 2) Fallback to external file (works locally if you run from project root)
+                java.io.File file = new java.io.File(filePath);
+                System.out.println("[JsonFileHandler] Classpath miss, trying FILE: " + file.getAbsolutePath());
+                if (!file.exists() || file.length() == 0) {
+                    System.out.println("[JsonFileHandler] File missing or empty: " + file.getAbsolutePath());
+                    return new java.util.ArrayList<>();
+                }
+                raw = java.nio.file.Files.readString(file.toPath());
             }
 
-            // 2) DEBUG: show what Railway actually sees
-            String raw = java.nio.file.Files.readString(file.toPath());
+            // DEBUG: show what we actually read
             System.out.println("[JsonFileHandler] Raw JSON (first 300 chars): "
                     + raw.substring(0, Math.min(300, raw.length())));
 
@@ -65,8 +75,10 @@ public class JsonFileHandler<T> {
                         + ", role=" + first.get("role"));
             }
 
-            // 3) Parse into objects and RETURN
-            List<T> data = objectMapper.readValue(file, typeReference);
+            // 3) Parse into objects and return
+            // NOTE: parse from the same 'raw' we inspected so classpath works
+            java.io.ByteArrayInputStream bin = new java.io.ByteArrayInputStream(raw.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            List<T> data = objectMapper.readValue(bin, typeReference);
             return data;
 
         } catch (Exception e) {
@@ -75,7 +87,6 @@ public class JsonFileHandler<T> {
             return new java.util.ArrayList<>();
         }
     }
-
 
     // Write all records to JSON file with atomic operation
     // Optimized write with cache invalidation

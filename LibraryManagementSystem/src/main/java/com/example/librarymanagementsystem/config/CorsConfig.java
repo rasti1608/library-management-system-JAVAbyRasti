@@ -50,7 +50,8 @@ public class CorsConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cfg = new CorsConfiguration();
         cfg.setAllowedOrigins(List.of(
-                "https://melodious-mousse-c2a470.netlify.app"  // your frontend
+                "http://localhost",  // For local testing
+                "https://melodious-mousse-c2a470.netlify.app"  // Your Netlify domain
         ));
         cfg.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
         cfg.setAllowedHeaders(List.of("*"));
