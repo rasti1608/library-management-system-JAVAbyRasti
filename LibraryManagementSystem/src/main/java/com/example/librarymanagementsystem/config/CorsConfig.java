@@ -45,26 +45,18 @@ public class CorsConfig {
      *  - methods/headers allowed
      *  - credentials enabled for cookie-based sessions
      */
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cfg = new CorsConfiguration();
-
-        // Allowed origins: add Netlify + dev origins (no "*", because credentials=true)
-        cfg.setAllowedOrigins(merge(NETLIFY, DEV_ORIGINS));
-
-        // Typical REST verbs
-        cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-
-        // Allow any header from the browser (e.g., Content-Type, Authorization)
+        cfg.setAllowedOrigins(List.of(
+                "https://melodious-mousse-c2a470.netlify.app"  // your frontend
+        ));
+        cfg.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
         cfg.setAllowedHeaders(List.of("*"));
+        cfg.setAllowCredentials(true);                     // <—
+        cfg.setExposedHeaders(List.of("Set-Cookie"));      // helpful for debugging
 
-        // Must be true for browser to send/receive cookies across origins
-        cfg.setAllowCredentials(true);
-
-        // Preflight cache duration (seconds)
-        cfg.setMaxAge(3600L);
-
-        // Apply this config to all endpoints
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", cfg);
         return source;
