@@ -1,4 +1,5 @@
 # 📚 Library Management System – Final Project
+[![Swagger UI](https://img.shields.io/badge/API-Docs-green)](https://library-management-system-rasti-production.up.railway.app/swagger-ui/index.html)
 
 ## Overview
 This project is a **Spring Boot web application** that simulates how a real library operates.  

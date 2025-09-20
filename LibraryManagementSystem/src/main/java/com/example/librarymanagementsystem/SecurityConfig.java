@@ -27,40 +27,29 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-                // Disable CSRF for REST API (frontend handles CORS)
+                // CORS is handled by a CorsFilter bean (see CorsConfig); no http.cors() needed
                 .csrf(csrf -> csrf.disable())
-
-                // Configure endpoint access rules
                 .authorizeHttpRequests(auth -> auth
-                        // Public endpoints
-                                .requestMatchers(
-                                        "/v3/api-docs/**",
-                                        "/swagger-ui/**",
-                                        "/swagger-ui.html",
-                                        "/swagger-resources/**",
-                                        "/webjars/**",
-                                        "/actuator/health",
-                                        "/health",
-                                        "/api/auth/**",     // Add /api prefix
-                                        "/auth/**",
-                                        "/api/books/**",    // Add /api prefix
-                                        "/books/**",
-                                        "/api/users/**",    // Add /api prefix
-                                        "/users/**",
-                                        "/error"
-                                ).permitAll()
-
-                        // Protected endpoints
-//                        .requestMatchers("/admin/**").authenticated()
-//                        .requestMatchers("/users/**").authenticated()
-
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/swagger-resources/**",
+                                "/webjars/**",
+                                "/actuator/health",
+                                "/health",
+                                "/api/auth/**",
+                                "/auth/**",
+                                "/api/books/**",
+                                "/books/**",
+                                "/api/users/**",
+                                "/users/**",
+                                "/error"
+                        ).permitAll()
                         .anyRequest().permitAll()
                 )
-
-                // Disable default login forms (we use custom REST endpoints)
                 .formLogin(form -> form.disable())
                 .httpBasic(basic -> basic.disable())
-
                 .build();
     }
 
