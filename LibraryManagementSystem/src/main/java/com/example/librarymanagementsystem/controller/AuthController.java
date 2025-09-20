@@ -58,12 +58,12 @@ public class AuthController {
                     // Create HTTP session for user
                     System.out.println("Creating session for user: " + user.getId());
                     HttpSession session = httpRequest.getSession(true);
-                    System.out.println("Session created: " + session.getId());
 
+                    // store username (non-null) so session survives even if id is null
                     session.setAttribute("userId", user.getId());
                     session.setAttribute("username", user.getUsername());
                     session.setAttribute("role", user.getRole().toString());
-                    System.out.println("Session attributes set successfully");
+                    System.out.println("Session created: " + session.getId());
 
                     return ResponseEntity.ok(Map.of(
                             "message", "Login successful",

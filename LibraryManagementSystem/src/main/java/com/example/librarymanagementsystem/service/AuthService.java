@@ -74,13 +74,17 @@ public class AuthService {
         }
 
         // Create new user with hashed password
-        User newUser = new User(
-                UuidGenerator.generate(),
-                trimmedUsername,           // Use the trimmed version
-                passwordEncoder.encode(password), // Hash the password
-                trimmedEmail,              // Use the trimmed version
-                UserRole.USER // New users always get USER role
-        );
+        User newUser = new User();                     // use no-args
+        newUser.setId(UuidGenerator.generate());       // generate ID
+        newUser.setUsername(username);
+
+        // hash the password inline instead of using "hashed" variable
+        newUser.setPasswordHash(passwordEncoder.encode(password));
+
+        newUser.setEmail(email);
+        newUser.setRole(UserRole.USER);
+        newUser.setMustChangePassword(false);
+        newUser.setProtected(false);
 
         return userRepository.save(newUser);
     }

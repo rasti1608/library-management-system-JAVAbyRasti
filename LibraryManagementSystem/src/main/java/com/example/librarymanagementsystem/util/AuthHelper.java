@@ -27,16 +27,17 @@ public class AuthHelper {
     // Get current logged-in user from session
     public Optional<User> getCurrentUser(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if (session == null) {
-            return Optional.empty();
-        }
+        if (session == null) return Optional.empty();
 
-        String userId = (String) session.getAttribute("userId");
-        if (userId == null) {
-            return Optional.empty();
-        }
+        String stored = (String) session.getAttribute("userId");
+        if (stored == null || stored.isEmpty()) return Optional.empty();
 
-        return userRepository.findById(userId);
+        // try as ID first
+        Optional<User> byId = userRepository.findById(stored);
+        if (byId.isPresent()) return byId;
+
+        // fallback: treat stored value as username
+        return userRepository.findByUsername(stored);
     }
 
     // Check if current user has admin role

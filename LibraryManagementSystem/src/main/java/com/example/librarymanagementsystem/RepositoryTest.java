@@ -32,13 +32,16 @@ public class RepositoryTest {
         });
 
         // Test creating new user
-        User testUser = new User(
-                UuidGenerator.generate(),
-                "testuser",
-                "hashedpassword",
-                "test@test.com",
-                UserRole.USER
-        );
+        User testUser = new User();
+        testUser.setId("test-123");
+        testUser.setUsername("testuser");
+        testUser.setPasswordHash("$2a$10$dummyHashHere..."); // use any valid bcrypt string
+        testUser.setEmail("test@library.com");
+        testUser.setRole(UserRole.USER);
+        testUser.setProtected(false);
+        testUser.setMustChangePassword(false);
+
+        userRepo.save(testUser);
 
         userRepo.save(testUser);
         System.out.println("Test user saved");
