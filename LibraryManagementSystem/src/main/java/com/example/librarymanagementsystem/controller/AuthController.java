@@ -60,7 +60,7 @@ public class AuthController {
                     HttpSession session = httpRequest.getSession(true);
 
                     // store username (non-null) so session survives even if id is null
-                    session.setAttribute("userId", user.getId());
+                    session.setAttribute("userId", user.getUsername());  // TEMP: keep Railway sessions alive
                     session.setAttribute("username", user.getUsername());
                     session.setAttribute("role", user.getRole().toString());
                     System.out.println("Session created: " + session.getId());
