@@ -53,7 +53,7 @@ public class JsonUserRepository implements UserRepository {
                 System.out.println("First user debug:");
                 // ... debug output
             }
-            
+
         } catch (Exception e) {
             System.out.println("Failed to load user data: " + e.getMessage());
             e.printStackTrace();

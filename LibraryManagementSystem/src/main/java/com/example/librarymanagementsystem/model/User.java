@@ -4,7 +4,7 @@ import com.example.librarymanagementsystem.model.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
-    @JsonProperty("id")
+    @JsonProperty("userId")
     private String id;
 
     @JsonProperty("username")
@@ -13,7 +13,7 @@ public class User {
     @JsonProperty("passwordHash")
     private String passwordHash;
 
-    @JsonProperty("email")
+    @JsonProperty("userEmail")
     private String email;
 
     @JsonProperty("role")
