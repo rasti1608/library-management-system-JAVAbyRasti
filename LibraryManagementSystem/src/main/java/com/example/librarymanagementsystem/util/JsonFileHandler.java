@@ -46,6 +46,10 @@ public class JsonFileHandler<T> {
                 return new ArrayList<>();
             }
 
+            // Debug: Print raw JSON content
+            String rawJson = Files.readString(file.toPath());
+            System.out.println("Raw JSON file content (first 500 chars): " + rawJson.substring(0, Math.min(500, rawJson.length())));
+
             List<T> data = objectMapper.readValue(file, typeReference);
 
             // Cache the result

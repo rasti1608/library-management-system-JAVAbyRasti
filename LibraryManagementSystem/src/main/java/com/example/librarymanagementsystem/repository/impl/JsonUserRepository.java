@@ -30,6 +30,16 @@ public class JsonUserRepository implements UserRepository {
             List<User> initialUsers = fileHandler.readFromFile();
             this.users = new CopyOnWriteArrayList<>(initialUsers);
             System.out.println("Loaded " + users.size() + " users successfully");
+
+            // Debug the first user's raw data
+            if (!users.isEmpty()) {
+                User firstUser = users.get(0);
+                System.out.println("First user debug:");
+                System.out.println("  ID: '" + firstUser.getId() + "'");
+                System.out.println("  Username: '" + firstUser.getUsername() + "'");
+                System.out.println("  Email: '" + firstUser.getEmail() + "'");
+                System.out.println("  Role: '" + firstUser.getRole() + "'");
+            }
         } catch (Exception e) {
             System.out.println("Failed to load user data: " + e.getMessage());
             e.printStackTrace();
