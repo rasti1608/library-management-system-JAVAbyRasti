@@ -32,6 +32,10 @@ public class JsonUserRepository implements UserRepository {
             System.out.println("Loaded " + users.size() + " users successfully");
 
             // Debug the first user's raw data
+            this.users = new CopyOnWriteArrayList<>(initialUsers);
+            System.out.println("Loaded " + users.size() + " users successfully");
+            System.out.println("Users empty? " + users.isEmpty());
+
             if (!users.isEmpty()) {
                 User firstUser = users.get(0);
                 System.out.println("First user debug:");
@@ -40,6 +44,16 @@ public class JsonUserRepository implements UserRepository {
                 System.out.println("  Email: '" + firstUser.getEmail() + "'");
                 System.out.println("  Role: '" + firstUser.getRole() + "'");
             }
+
+            System.out.println("Loaded " + users.size() + " users successfully");
+            if (users.isEmpty()) {
+                System.out.println("WARNING: No users loaded! This will break authentication.");
+            } else {
+                User firstUser = users.get(0);
+                System.out.println("First user debug:");
+                // ... debug output
+            }
+            
         } catch (Exception e) {
             System.out.println("Failed to load user data: " + e.getMessage());
             e.printStackTrace();
