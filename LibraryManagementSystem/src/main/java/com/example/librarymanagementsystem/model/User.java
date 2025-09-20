@@ -4,13 +4,25 @@ import com.example.librarymanagementsystem.model.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
+    @JsonProperty("id")
     private String id;
+
+    @JsonProperty("username")
     private String username;
+
+    @JsonProperty("passwordHash")
     private String passwordHash;
+
+    @JsonProperty("email")
     private String email;
+
+    @JsonProperty("role")
     private UserRole role;
+
     @JsonProperty("protected")
-    private boolean isProtected;  // Cannot delete if true
+    private boolean isProtected;
+
+    @JsonProperty("mustChangePassword")
     private boolean mustChangePassword;
 
     // Default constructor

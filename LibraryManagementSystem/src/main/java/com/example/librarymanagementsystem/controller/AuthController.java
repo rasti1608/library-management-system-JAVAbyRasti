@@ -48,6 +48,12 @@ public class AuthController {
             if (userOpt.isPresent()) {
                 User user = userOpt.get();
 
+                // Add these debug lines here:
+                System.out.println("User ID: " + user.getId());
+                System.out.println("User username: " + user.getUsername());
+                System.out.println("User email: " + user.getEmail());
+                System.out.println("User role: " + user.getRole());
+
                 try {
                     // Create HTTP session for user
                     System.out.println("Creating session for user: " + user.getId());
