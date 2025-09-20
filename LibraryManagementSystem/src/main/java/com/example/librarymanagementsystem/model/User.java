@@ -7,22 +7,14 @@ public class User {
     @JsonProperty("userId")
     private String id;
 
-    @JsonProperty("username")
     private String username;
-
-    @JsonProperty("passwordHash")
     private String passwordHash;
 
     @JsonProperty("userEmail")
     private String email;
 
-    @JsonProperty("role")
     private UserRole role;
-
-    @JsonProperty("protected")
     private boolean isProtected;
-
-    @JsonProperty("mustChangePassword")
     private boolean mustChangePassword;
 
     // Default constructor
