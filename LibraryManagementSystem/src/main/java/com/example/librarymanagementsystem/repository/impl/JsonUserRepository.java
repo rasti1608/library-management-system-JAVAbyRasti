@@ -25,12 +25,14 @@ public class JsonUserRepository implements UserRepository {
 
     @PostConstruct
     public void loadInitialData() {
-        // Load data once at startup from JSON file
         try {
+            System.out.println("Attempting to load user data...");
             List<User> initialUsers = fileHandler.readFromFile();
-            this.users = new CopyOnWriteArrayList<>(initialUsers); // Thread-safe list
+            this.users = new CopyOnWriteArrayList<>(initialUsers);
+            System.out.println("Loaded " + users.size() + " users successfully");
         } catch (Exception e) {
-            // If file doesn't exist or fails to load, start with empty list
+            System.out.println("Failed to load user data: " + e.getMessage());
+            e.printStackTrace();
             this.users = new CopyOnWriteArrayList<>();
         }
     }
