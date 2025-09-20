@@ -48,21 +48,31 @@ public class AuthController {
             if (userOpt.isPresent()) {
                 User user = userOpt.get();
 
-                // Create HTTP session for user
-                HttpSession session = httpRequest.getSession(true);
-                session.setAttribute("userId", user.getId());
-                session.setAttribute("username", user.getUsername());
-                session.setAttribute("role", user.getRole().toString());
+                try {
+                    // Create HTTP session for user
+                    System.out.println("Creating session for user: " + user.getId());
+                    HttpSession session = httpRequest.getSession(true);
+                    System.out.println("Session created: " + session.getId());
 
-                return ResponseEntity.ok(Map.of(
-                        "message", "Login successful",
-                        "user", Map.of(
-                                "id", user.getId(),
-                                "username", user.getUsername(),
-                                "email", user.getEmail(),
-                                "role", user.getRole()
-                        )
-                ));
+                    session.setAttribute("userId", user.getId());
+                    session.setAttribute("username", user.getUsername());
+                    session.setAttribute("role", user.getRole().toString());
+                    System.out.println("Session attributes set successfully");
+
+                    return ResponseEntity.ok(Map.of(
+                            "message", "Login successful",
+                            "user", Map.of(
+                                    "id", user.getId(),
+                                    "username", user.getUsername(),
+                                    "email", user.getEmail(),
+                                    "role", user.getRole()
+                            )
+                    ));
+                } catch (Exception sessionError) {
+                    System.out.println("Session creation failed: " + sessionError.getMessage());
+                    sessionError.printStackTrace();
+                    return ResponseEntity.status(500).body(Map.of("error", "Session creation failed: " + sessionError.getMessage()));
+                }
             } else {
                 return ResponseEntity.status(401).body(Map.of("error", "Invalid credentials"));
             }
