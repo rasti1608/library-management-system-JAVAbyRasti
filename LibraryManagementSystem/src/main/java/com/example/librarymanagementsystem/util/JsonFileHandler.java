@@ -35,31 +35,47 @@ public class JsonFileHandler<T> {
     // Optimized read with caching
     public List<T> readFromFile() {
         try {
-            // Check cache first
-            List<T> cached = cacheHelper.get(cacheKey, List.class);
-            if (cached != null) {
-                return cached;
-            }
-
-            File file = new File(filePath);
+            // 1) Open file
+            java.io.File file = new java.io.File(filePath);
             if (!file.exists() || file.length() == 0) {
-                return new ArrayList<>();
+                System.out.println("[JsonFileHandler] File missing or empty: " + filePath);
+                return new java.util.ArrayList<>();
             }
 
-            // Debug: Print raw JSON content
-            String rawJson = Files.readString(file.toPath());
-            System.out.println("Raw JSON file content (first 500 chars): " + rawJson.substring(0, Math.min(500, rawJson.length())));
+            // 2) DEBUG: show what Railway actually sees
+            String raw = java.nio.file.Files.readString(file.toPath());
+            System.out.println("[JsonFileHandler] Raw JSON (first 300 chars): "
+                    + raw.substring(0, Math.min(300, raw.length())));
 
+            com.fasterxml.jackson.databind.JsonNode root = objectMapper.readTree(raw);
+            if (root.isArray() && root.size() > 0) {
+                com.fasterxml.jackson.databind.JsonNode first = root.get(0);
+                java.util.Iterator<String> it = first.fieldNames();
+                StringBuilder keys = new StringBuilder();
+                while (it.hasNext()) {
+                    if (keys.length() > 0) keys.append(", ");
+                    keys.append(it.next());
+                }
+                System.out.println("[JsonFileHandler] First user keys: [" + keys + "]");
+                System.out.println("[JsonFileHandler] Sample values -> id=" + first.get("id")
+                        + ", userId=" + first.get("userId")
+                        + ", email=" + first.get("email")
+                        + ", userEmail=" + first.get("userEmail")
+                        + ", username=" + first.get("username")
+                        + ", role=" + first.get("role"));
+            }
+
+            // 3) Parse into objects and RETURN
             List<T> data = objectMapper.readValue(file, typeReference);
-
-            // Cache the result
-            cacheHelper.put(cacheKey, data);
-
             return data;
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to read from file: " + filePath, e);
+
+        } catch (Exception e) {
+            System.out.println("[JsonFileHandler] Key-dump/read failed: " + e.getMessage());
+            e.printStackTrace();
+            return new java.util.ArrayList<>();
         }
     }
+
 
     // Write all records to JSON file with atomic operation
     // Optimized write with cache invalidation
