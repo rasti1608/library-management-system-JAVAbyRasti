@@ -27,7 +27,7 @@ import org.springframework.web.filter.CorsFilter;
 public class CorsConfig {
 
     // 1) Put your exact Netlify origin here (NO trailing slash)
-    private static final String NETLIFY = "https://<YOUR_NETLIFY_SUBDOMAIN>.netlify.app";
+    private static final String NETLIFY = "https://melodious-mousse-c2a470.netlify.app";
 
     // 2) Local dev origins we allow while you’re building & testing
     //    (Keep if you want to test locally; remove them if you want a locked-down prod)
