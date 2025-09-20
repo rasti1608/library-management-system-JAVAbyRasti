@@ -1,6 +1,7 @@
 package com.example.librarymanagementsystem.model;
 
 import com.example.librarymanagementsystem.model.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
     private String id;
@@ -8,6 +9,7 @@ public class User {
     private String passwordHash;
     private String email;
     private UserRole role;
+    @JsonProperty("protected")
     private boolean isProtected;  // Cannot delete if true
     private boolean mustChangePassword;
 
@@ -21,6 +23,7 @@ public class User {
         this.passwordHash = passwordHash;
         this.email = email;
         this.role = role;
+
         this.isProtected = false;
         this.mustChangePassword = false;
     }
