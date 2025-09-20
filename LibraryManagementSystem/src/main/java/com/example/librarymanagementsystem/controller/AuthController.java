@@ -68,10 +68,10 @@ public class AuthController {
                     return ResponseEntity.ok(Map.of(
                             "message", "Login successful",
                             "user", Map.of(
-                                    "id", user.getId(),
-                                    "username", user.getUsername(),
-                                    "email", user.getEmail(),
-                                    "role", user.getRole()
+                                    "id", user.getId() != null ? user.getId() : "temp-id",
+                                    "username", user.getUsername() != null ? user.getUsername() : "unknown",
+                                    "email", user.getEmail() != null ? user.getEmail() : "no-email",
+                                    "role", user.getRole() != null ? user.getRole().toString() : "USER"
                             )
                     ));
                 } catch (Exception sessionError) {
