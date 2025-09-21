@@ -123,6 +123,30 @@ turns documentation into an experience rather than a static reference.
 
 ------------------------------------------------------------------------
 
+### 8. Future Challenge: Database Integration
+
+If I had more time, the natural next step for this project would be to
+**replace JSON file persistence with a real database** (e.g., H2,
+PostgreSQL, or MySQL).
+
+The project structure (repositories, services, controllers) already
+supports this. Swapping in JPA/Hibernate or JDBC would demonstrate:
+- Entity relationships (User ↔ Rentals ↔ Books)
+- Real migrations and schema management
+- Querying with repositories and custom queries
+- Deployment with a database in the cloud
+
+I see this as a **perfect challenge for anyone taking the course after
+me**:
+- ✅ Start from my JSON-based project
+- 🔄 Re-implement persistence using a real database
+- 🚀 Deploy it in your own environment
+
+This would push your learning beyond the basics and show how enterprise
+systems are actually built in production.
+
+------------------------------------------------------------------------
+
 ## ✅ Takeaways
 
 -   ColdFusion taught me productivity.
