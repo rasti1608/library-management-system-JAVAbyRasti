@@ -29,15 +29,29 @@ public class AuthHelper {
         HttpSession session = request.getSession(false);
         if (session == null) return Optional.empty();
 
-        String stored = (String) session.getAttribute("userId");
-        if (stored == null || stored.isEmpty()) return Optional.empty();
+        // read both keys; different builds may have one or the other
+        String storedId       = (String) session.getAttribute("userId");
+        String storedUsername = (String) session.getAttribute("username");
 
-        // try as ID first
-        Optional<User> byId = userRepository.findById(stored);
-        if (byId.isPresent()) return byId;
+        // 1) try ID
+        if (storedId != null && !storedId.isBlank()) {
+            Optional<User> byId = userRepository.findById(storedId);
+            if (byId.isPresent()) return byId;
+        }
 
-        // fallback: treat stored value as username
-        return userRepository.findByUsername(stored);
+        // 2) try username explicitly
+        if (storedUsername != null && !storedUsername.isBlank()) {
+            Optional<User> byUser = userRepository.findByUsername(storedUsername);
+            if (byUser.isPresent()) return byUser;
+        }
+
+        // 3) final fallback: if userId actually holds a username
+        if (storedId != null && !storedId.isBlank()) {
+            Optional<User> byUser = userRepository.findByUsername(storedId);
+            if (byUser.isPresent()) return byUser;
+        }
+
+        return Optional.empty();
     }
 
     // Check if current user has admin role
