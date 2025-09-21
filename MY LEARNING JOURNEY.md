@@ -3,7 +3,7 @@
 ## 🚀 Overview
 
 This project has been one of the most valuable learning experiences of
-my career.
+my career.\
 Coming from a ColdFusion background, I entered this journey with
 curiosity and left with a deep appreciation for how **Java and Spring
 Boot** bring discipline, structure, and scalability to software
@@ -16,10 +16,9 @@ development.
 ### 1. Documentation First
 
 I realized that **before writing a single line of code**, a real project
-begins with documentation: - Business Requirements
-- Scope Freeze (rules and limits like max rentals, password policies)
-- Technical Design
-- Development Sequence
+begins with documentation: - Business Requirements - Scope Freeze (rules
+and limits like max rentals, password policies) - Technical Design -
+Development Sequence
 
 This showed me that documentation isn't bureaucracy --- it's the
 foundation of professional software.
@@ -29,7 +28,7 @@ foundation of professional software.
 ### 2. ColdFusion vs. Java
 
 -   ColdFusion gave me speed and flexibility, but required
-    **discipline** to avoid spaghetti code.
+    **discipline** to avoid spaghetti code.\
 -   Java enforces structure by design. At first it felt heavier, but I
     discovered that **discipline doesn't have to kill productivity**.
     Once you know the patterns, you can move fast *and* keep things
@@ -41,22 +40,19 @@ foundation of professional software.
 
 Through this project, I strengthened my understanding of: -
 **Object-Oriented Programming** → interfaces, inheritance,
-polymorphism.
-- **Dependency Injection** → loose coupling with Spring beans.
-- **Repository-Service-Controller Layers** → clean separation of
-concerns.
-- **Role-Based Access Control** → User vs Admin capabilities.
-- **File-Based Persistence** → JSON files for users, books, rentals.
-- **API Documentation** → Swagger/OpenAPI integration.
+polymorphism - **Dependency Injection** → loose coupling with Spring
+beans - **Repository-Service-Controller Layers** → clean separation of
+concerns - **Role-Based Access Control** → User vs Admin capabilities -
+**File-Based Persistence** → JSON files for users, books, rentals -
+**API Documentation** → Swagger/OpenAPI integration
 
 ------------------------------------------------------------------------
 
 ### 4. Frontend + Backend Integration
 
 I saw clearly how the **frontend (HTML/JS)** talks to the **backend
-(Spring Boot REST APIs)**: - Login, registration, and session handling
-- Book browsing and rentals
-- Admin management and statistics
+(Spring Boot REST APIs)**: - Login, registration, and session handling -
+Book browsing and rentals - Admin management and statistics
 
 This gave me my true "aha moment" --- understanding the **cut between
 frontend and backend** and how both sides connect.
@@ -65,9 +61,9 @@ frontend and backend** and how both sides connect.
 
 ### 5. Real Deployment & Debugging
 
-Deploying the app to **Railway** taught me an equally valuable lesson:
-- The code isn't real until it runs in production.
-- Remote debugging through **logs only** is a skill in itself.
+Deploying the app to **Railway** taught me an equally valuable lesson:\
+- The code isn't real until it runs in production.\
+- Remote debugging through **logs only** is a skill in itself.\
 - It took hours of patience, but I learned how to trace issues,
 interpret stack traces, and validate API connections under real
 conditions.
@@ -81,23 +77,23 @@ fixing it in the real world**.
 ### 6. The Right Learning Path
 
 One of my biggest realizations was that **Spring only makes sense if you
-first master OOP fundamentals**:
-- Interfaces, inheritance, and polymorphism
-- Tight vs. loose coupling
+first master OOP fundamentals**:\
+- Interfaces, inheritance, and polymorphism\
+- Tight vs. loose coupling\
 - Dependency injection as a natural extension of loose coupling
 
 Once these are clear, Spring's annotations (`@Component`, `@Autowired`,
 `@Bean`, etc.) are no longer "magic words" --- they are tools built on
 top of solid object-oriented design.
 
-That's why in my project I deliberately started with:
+That's why in my project I deliberately started with:\
 1. 📄 **Business rules & requirements** (understanding the problem
-before coding)
-2. 🏗️ **Design & OOP** (interfaces, classes, decoupling)
+before coding)\
+2. 🏗️ **Design & OOP** (interfaces, classes, decoupling)\
 3. 🛠️ **Repositories, services, controllers** (clean separation of
-concerns)
-4. 🌐 **REST APIs + Swagger docs**
-5. 💻 **Frontend integration**
+concerns)\
+4. 🌐 **REST APIs + Swagger docs**\
+5. 💻 **Frontend integration**\
 6. 🚀 **Deployment & debugging in production**
 
 Following this sequence turned Spring from something confusing into a
@@ -106,12 +102,33 @@ a framework for thinking like a real software engineer.
 
 ------------------------------------------------------------------------
 
+### 7. Educational Demo Pages
+
+Another key part of my project was building **interactive demo pages
+with tooltips**.\
+- Every form field (username, email, password, etc.) explains **what
+validation rules apply, what the API expects, and what errors might
+occur**.\
+- Tooltips reveal the **"magic behind the curtain"** --- showing JSON
+payloads, regex checks, and API endpoints.\
+- Hovering or focusing on a field teaches not just *what to type*, but
+*why it matters* and *how the backend processes it*.
+
+This turns each page into more than a demo --- it becomes an
+**educational tool** that teaches API design and client/server
+interaction in real time.
+
+I believe this approach makes complex systems more approachable and
+turns documentation into an experience rather than a static reference.
+
+------------------------------------------------------------------------
+
 ## ✅ Takeaways
 
--   ColdFusion taught me productivity.
--   Java taught me discipline and structure.
--   Debugging production issues taught me **resilience and patience**.
--   The sweet spot is knowing how to balance all three.
+-   ColdFusion taught me productivity.\
+-   Java taught me discipline and structure.\
+-   Debugging production issues taught me **resilience and patience**.\
+-   The sweet spot is knowing how to balance all three.\
 -   Most importantly: **great software starts with clear documentation,
     then clean design, then code --- and it only becomes real when it's
     deployed and working.**
@@ -120,7 +137,7 @@ a framework for thinking like a real software engineer.
 
 ## 🎯 Final Reflection
 
-This wasn't just about learning Java syntax.
+This wasn't just about learning Java syntax.\
 It was about learning **how real enterprise systems are built and run**
 --- from documentation and planning, to architecture and coding, to
 testing, deployment, and debugging.
