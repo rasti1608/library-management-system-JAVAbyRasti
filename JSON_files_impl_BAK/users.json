@@ -1,0 +1,596 @@
+[
+  {
+    "id": "a1b2c3d4-e5f6-4a7b-8c9d-123456789abd",
+    "username": "admin",
+    "passwordHash": "$2a$10$SIncPB9YBuZg2BVAn6tU/emnBMwca6r6ezwCW/P0VwYNteMA8JLrm",
+    "email": "admin@library.com",
+    "role": "ADMIN",
+    "mustChangePassword": true,
+    "protected": true
+  },
+  {
+    "id": "a1b2c3d4-e5f6-4a7b-8c9d-123456789abc",
+    "username": "admin2",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "admin@library.edu",
+    "role": "ADMIN",
+    "mustChangePassword": false,
+    "protected": true
+  },
+  {
+    "id": "b2c3d4e5-f6a7-4b8c-9d0e-23456789bcde",
+    "username": "librarian_sarah",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "sarah.johnson@library.edu",
+    "role": "ADMIN",
+    "mustChangePassword": false,
+    "protected": true
+  },
+  {
+    "id": "c3d4e5f6-a7b8-4c9d-0e1f-3456789cdef0",
+    "username": "michael_chen",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "michael.chen@library.edu",
+    "role": "ADMIN",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "d4e5f6a7-b8c9-4d0e-1f2a-456789def012",
+    "username": "emma_rodriguez",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "emma.rodriguez@library.edu",
+    "role": "ADMIN",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "e5f6a7b8-c9d0-4e1f-2a3b-56789ef01234",
+    "username": "david_williams",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "david.williams@library.edu",
+    "role": "ADMIN",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "f6a7b8c9-d0e1-4f2a-3b4c-6789f0123456",
+    "username": "alice_cooper",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "alice.cooper@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "a7b8c9d0-e1f2-4a3b-4c5d-789012345678",
+    "username": "james_brown",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "james.brown@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "b8c9d0e1-f2a3-4b4c-5d6e-89012345678a",
+    "username": "sophia_garcia",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "sophia.garcia@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "c9d0e1f2-a3b4-4c5d-6e7f-9012345678ab",
+    "username": "robert_taylor",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "robert.taylor@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "d0e1f2a3-b4c5-4d6e-7f8a-012345678abc",
+    "username": "olivia_martin",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "olivia.martin@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "e1f2a3b4-c5d6-4e7f-8a9b-12345678abcd",
+    "username": "william_lee",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "william.lee@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "f2a3b4c5-d6e7-4f8a-9b0c-2345678abcde",
+    "username": "isabella_white",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "isabella.white@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "a3b4c5d6-e7f8-4a9b-0c1d-345678abcdef",
+    "username": "benjamin_harris",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "benjamin.harris@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "b4c5d6e7-f8a9-4b0c-1d2e-45678abcdef0",
+    "username": "charlotte_clark",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "charlotte.clark@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "c5d6e7f8-a9b0-4c1d-2e3f-5678abcdef01",
+    "username": "lucas_lewis",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "lucas.lewis@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "d6e7f8a9-b0c1-4d2e-3f4a-678abcdef012",
+    "username": "mia_walker",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "mia.walker@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "e7f8a9b0-c1d2-4e3f-4a5b-78abcdef0123",
+    "username": "henry_hall",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "henry.hall@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "f8a9b0c1-d2e3-4f4a-5b6c-8abcdef01234",
+    "username": "amelia_allen",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "amelia.allen@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "a9b0c1d2-e3f4-4a5b-6c7d-abcdef012345",
+    "username": "alex_young",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "alexander.young@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "b0c1d2e3-f4a5-4b6c-7d8e-bcdef0123456",
+    "username": "harper_king",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "harper.king@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "c1d2e3f4-a5b6-4c7d-8e9f-cdef01234567",
+    "username": "mason_wright",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "mason.wright@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "d2e3f4a5-b6c7-4d8e-9f0a-def012345678",
+    "username": "evelyn_lopez",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "evelyn.lopez@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "e3f4a5b6-c7d8-4e9f-0a1b-ef0123456789",
+    "username": "ethan_hill",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "ethan.hill@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "f4a5b6c7-d8e9-4f0a-1b2c-f012345678ab",
+    "username": "abigail_scott",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "abigail.scott@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "a5b6c7d8-e9f0-4a1b-2c3d-012345678abc",
+    "username": "jacob_green",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "jacob.green@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "b6c7d8e9-f0a1-4b2c-3d4e-12345678abcd",
+    "username": "emily_adams",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "emily.adams@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "c7d8e9f0-a1b2-4c3d-4e5f-2345678abcde",
+    "username": "noah_baker",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "noah.baker@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "d8e9f0a1-b2c3-4d4e-5f6a-345678abcdef",
+    "username": "liz_gonzalez",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "elizabeth.gonzalez@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "e9f0a1b2-c3d4-4e5f-6a7b-45678abcdef0",
+    "username": "logan_nelson",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "logan.nelson@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "f0a1b2c3-d4e5-4f6a-7b8c-5678abcdef01",
+    "username": "avery_carter",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "avery.carter@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "a1b2c3d4-e5f6-4a7b-8c9d-678abcdef012",
+    "username": "jack_mitchell",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "jackson.mitchell@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "b2c3d4e5-f6a7-4b8c-9d0e-78abcdef0123",
+    "username": "sofia_perez",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "sofia.perez@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "c3d4e5f6-a7b8-4c9d-0e1f-8abcdef01234",
+    "username": "aiden_roberts",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "aiden.roberts@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "d4e5f6a7-b8c9-4d0e-1f2a-abcdef012345",
+    "username": "camila_turner",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "camila.turner@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "e5f6a7b8-c9d0-4e1f-2a3b-bcdef0123456",
+    "username": "carter_phillips",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "carter.phillips@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "f6a7b8c9-d0e1-4f2a-3b4c-cdef01234567",
+    "username": "aria_campbell",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "aria.campbell@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "a7b8c9d0-e1f2-4a3b-4c5d-def012345678",
+    "username": "wyatt_parker",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "wyatt.parker@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "b8c9d0e1-f2a3-4b4c-5d6e-ef0123456789",
+    "username": "scarlett_evans",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "scarlett.evans@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "c9d0e1f2-a3b4-4c5d-6e7f-f012345678ab",
+    "username": "luke_edwards",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "luke.edwards@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "d0e1f2a3-b4c5-4d6e-7f8a-012345678abc",
+    "username": "madison_collins",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "madison.collins@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "e1f2a3b4-c5d6-4e7f-8a9b-12345678abcd",
+    "username": "grayson_stewart",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "grayson.stewart@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "f2a3b4c5-d6e7-4f8a-9b0c-2345678abcde",
+    "username": "layla_sanchez",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "layla.sanchez@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "a3b4c5d6-e7f8-4a9b-0c1d-345678abcdef",
+    "username": "levi_morris",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "levi.morris@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "b4c5d6e7-f8a9-4b0c-1d2e-45678abcdef0",
+    "username": "penny_rogers",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "penelope.rogers@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "c5d6e7f8-a9b0-4c1d-2e3f-5678abcdef01",
+    "username": "owen_reed",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "owen.reed@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "d6e7f8a9-b0c1-4d2e-3f4a-678abcdef012",
+    "username": "chloe_cook",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "chloe.cook@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "e7f8a9b0-c1d2-4e3f-4a5b-78abcdef0123",
+    "username": "nathan_morgan",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "nathan.morgan@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "f8a9b0c1-d2e3-4f4a-5b6c-8abcdef01234",
+    "username": "zoe_bailey",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "zoe.bailey@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "a9b0c1d2-e3f4-4a5b-6c7d-abcdef012345",
+    "username": "caleb_rivera",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "caleb.rivera@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "b0c1d2e3-f4a5-4b6c-7d8e-bcdef0123456",
+    "username": "nora_cooper",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "nora.cooper@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "c1d2e3f4-a5b6-4c7d-8e9f-cdef01234567",
+    "username": "gabe_richardson",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "gabriel.richardson@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "d2e3f4a5-b6c7-4d8e-9f0a-def012345678",
+    "username": "lily_cox",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "lily.cox@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "e3f4a5b6-c7d8-4e9f-0a1b-ef0123456789",
+    "username": "julian_howard",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "julian.howard@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "f4a5b6c7-d8e9-4f0a-1b2c-f012345678ab",
+    "username": "grace_ward",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "grace.ward@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "a5b6c7d8-e9f0-4a1b-2c3d-012345678abc",
+    "username": "mateo_torres",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "mateo.torres@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "b6c7d8e9-f0a1-4b2c-3d4e-12345678abcd",
+    "username": "zoey_peterson",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "zoey.peterson@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "c7d8e9f0-a1b2-4c3d-4e5f-2345678abcde",
+    "username": "ryan_gray",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "ryan.gray@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "d8e9f0a1-b2c3-4d4e-5f6a-345678abcdef",
+    "username": "vic_ramirez",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "victoria.ramirez@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "e9f0a1b2-c3d4-4e5f-6a7b-45678abcdef0",
+    "username": "isaac_james",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "isaac.james@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "f0a1b2c3-d4e5-4f6a-7b8c-5678abcdef01",
+    "username": "aubrey_watson",
+    "passwordHash": "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
+    "email": "aubrey.watson@email.com",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "7c3a337a-98fc-46f4-902a-554961b74141",
+    "username": "Test777",
+    "passwordHash": "$2a$10$EhJQDU3pqhbTQJ7gRyet5uBBvWKhN0CxqEe39EuuGsFWDarDrG4U.",
+    "email": "test777@test.me",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "e938f189-45ca-4612-8507-e3757e2d4de9",
+    "username": "Rasto",
+    "passwordHash": "$2a$10$NRpd.0n6f8/aS0uz8QtV5OPHPxXMHxqlVbsbBF7tUkrj7PZ7G3THq",
+    "email": "rasto@comcast.net",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "7e4c0e5c-7042-4c21-83b0-58486efd09b1",
+    "username": "Rastik",
+    "passwordHash": "$2a$10$0BtbN6C8DJPixFAa/yBWb.4bB8lMyN2LZTtyRhib6DeOPUow5zO7.",
+    "email": "rtoscak@nonamedog.ai",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "081b2a06-a88f-49e9-82f0-cf30b720a50c",
+    "username": "Adam2",
+    "passwordHash": "$2a$10$RRvY0luxnunorJZpZ7hwaeYaI/SUcvqURgFFwt5LqrZLr1g402ooW",
+    "email": "rasto2@comcast.net",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  },
+  {
+    "id": "cc069e88-6c7a-459d-bedf-010680501e58",
+    "username": "admin4",
+    "passwordHash": "$2a$10$eoia0yBDrkkAPQdKs5twLO8aHY9jqvkNKv6oF.vVZo7.vS17rNeGe",
+    "email": "rasto4@comcast.net",
+    "role": "USER",
+    "mustChangePassword": false,
+    "protected": false
+  }
+]
