@@ -1,4 +1,4 @@
-# 📚 Library Management System – Final Project
+# 📚 Library Management System – Final Project (Note: For deployment, use the working_Final_v.2.0-sept20 branch which contains the production-ready code.)
 [![Swagger UI](https://img.shields.io/badge/API-Docs-green)](https://library-management-system-rasti-production.up.railway.app/swagger-ui/index.html)
 
 ## Overview
