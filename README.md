@@ -1,25 +1,6 @@
 # 📚 Library Management System – Final Project
 [![Swagger UI](https://img.shields.io/badge/API-Docs-green)](https://library-management-system-rasti-production.up.railway.app/swagger-ui/index.html)
 
-## Deployment Notes
-
-**For deployment on Railway (or similar cloud hosting platforms):**
-- Use the `working_Final_v.2.0-sept20` branch
-- This branch has JSON data files properly configured for cloud environments where file system access is restricted
-
-**For local development:**
-- The `main` branch works perfectly fine
-- JSON files can be read/written from any location in your local environment
-
-**Why the difference?**
-Cloud platforms like Railway restrict file system write access outside of specific directories. The `working_Final_v.2.0-sept20` branch has the JSON files positioned correctly for these restrictions, while the main branch is optimized for local development flexibility.
-
-## Overview
-This project is a **Spring Boot web application** that simulates how a real library operates.  
-The idea is simple: one library, one copy per book, real users renting and returning in real time.  
-
-It’s not just code — it’s a complete system that shows how enterprise applications are structured, with **users, roles, books, rentals, and admin features** all tied together.
-
 ---
 
 ## What the System Does
@@ -56,6 +37,20 @@ It’s not just code — it’s a complete system that shows how enterprise appl
 - **Architecture**: Repository + Service + Controller layers  
 - **Testing**: JUnit 5 & Mockito  
 
+---
+
+## Deployment Notes
+
+**For deployment on Railway (or similar cloud hosting platforms):**
+- Use the `working_Final_v.2.0-sept20` branch
+- This branch has JSON data files properly configured for cloud environments where file system access is restricted
+
+**For local development:**
+- The `main` branch works perfectly fine
+- JSON files can be read/written from any location in your local environment
+
+**Why the difference?**
+Cloud platforms like Railway restrict file system write access outside of specific directories. The `working_Final_v.2.0-sept20` branch has the JSON files positioned correctly for these restrictions, while the main branch is optimized for local development flexibility.
 ---
 
 ## Why This Project?
